@@ -1,0 +1,22 @@
+@startuml
+actor User as "鯖民"
+User -> Minecraft: ログイン
+activate Minecraft
+
+alt ゲーム内操作
+    User -> Minecraft: トークン要求
+    Minecraft -> WebApp: トークン要求
+    activate WebApp
+    Minecraft <-- WebApp: トークン返却
+    deactivate WebApp
+    User <-- Minecraft: プライベートチャット経由でトークン返却
+end
+
+User -> Minecraft: ログアウト
+deactivate Minecraft
+note right: この時点でユーザはゲームをログアウトしてもよい
+
+User -> WebApp: ログイン
+activate WebApp
+User <-> WebApp: 諸々
+@enduml
