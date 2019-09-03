@@ -1,0 +1,22 @@
+version: '2'
+services:
+  lapis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ccserver/lapis
+    container_name: lapis
+#     networks:
+#       - secure_bridge
+    volumes:
+      - "./:/var/www/ccserver.info/"
+    ports:
+      - "127.0.0.1:$PORT:8000"
+    expose:
+      - "8000"
+    user: $RUN_USER
+    command: ["lapis", "server"]
+
+# networks:
+#   secure_bridge:
+#     external: true

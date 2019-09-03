@@ -1,0 +1,4 @@
+<h1>ccserver.info</h1>
+<p>ようこそccserverへ</p>
+<p>現在、 <a href="//cc.crzd.me" target="_blank">ComputerCraft CI</a> の ComputerCraft 1.80pr1 build5 for Minecraft 1.12.2 を使用して、 ccserver.info でComputerCraftサーバーは稼働しています</p>
+<% render("views.mods") %>

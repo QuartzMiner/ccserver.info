@@ -1,0 +1,13 @@
+<div class="container">
+  <table class="table">
+    <thead><tr>
+      <th>Mod</th><th>場所</th><th>Version</th>
+    </tr></thead>
+    <tbody>
+    <% for _, mod in ipairs(modList) do %>
+      <tr><td><%= mod.name %></td><td><a href="<%= mod.href %>" target="_blank"><%= mod.label %></a></td><td><%= mod.version %></td></tr>
+    <% end %>
+    </tbody>
+  </table>
+  <small>ComputerCraftの場所とバージョンについて：オープンソース化されたComputerCraftの自動ビルドを使用しています。詳細はComputerCraft CIにもあるように、<a href="https://minecraft.curseforge.com/projects/computercraft" target="_blank">ComputerCraftのCurseForgeページ</a>を参照ください</small>
+</div>
