@@ -1,0 +1,26 @@
+@startuml
+actor User as "鯖民"
+User -> Minecraft: ログイン
+activate Minecraft
+
+User -> WebApp: ログイン試行
+note right: マイクラユーザ名のみ入力
+activate WebApp
+WebApp -> DB: トークン保存
+note left: トークン生成
+activate DB
+return
+deactivate DB
+Minecraft <- WebApp: トークン送信
+User <- Minecraft: プライベートチャット経由でトークン提示
+User --> Minecraft: チャット欄コマンドをクリックしてトークン送信
+Minecraft -> WebApp: 認証通知
+WebApp -> DB: トークン検索
+activate DB
+return
+deactivate DB
+note left: トークン検証
+WebApp --> User: ログイン成功
+User <-> WebApp: 諸々
+
+@enduml
