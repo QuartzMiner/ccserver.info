@@ -1,0 +1,10 @@
+@startuml
+actor 鯖民 as User
+entity コンピュータ as Computer
+
+User -> Computer: 所有登録要求\n`>own QuartzMiner_D`
+Computer -> Mod: 登録要求\n`ccserver.register_owner(\n     'QuartzMiner_D'\n  )`
+note left: そのコンピュータ自身\nしか登録できない
+database 所有データベース as DB
+Mod -> DB: 登録
+@enduml
