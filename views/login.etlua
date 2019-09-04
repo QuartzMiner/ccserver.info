@@ -1,0 +1,4 @@
+<form action="/login" method="POST">
+<input type="text" name="minecraft_user">
+<button>認証要求をMinecraftに送信する</button>
+</form>
