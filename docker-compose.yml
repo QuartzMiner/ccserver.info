@@ -17,6 +17,14 @@ services:
     user: $RUN_USER
     command: ["lapis", "server"]
 
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/data"
+    user: $RUN_USER
+
 # networks:
 #   secure_bridge:
 #     external: true

@@ -5,6 +5,8 @@ RUN apt update && apt install -y libssl-dev git \
  && rm -rf /var/lib/apt/lists/* \
  && mkdir -p /var/www
 
-RUN luarocks install lapis sqlite3complete redis-lua
+RUN luarocks install lapis
+RUN luarocks install lsqlite3complete
+RUN luarocks install redis-lua
 
 WORKDIR /var/www/ccserver.info
