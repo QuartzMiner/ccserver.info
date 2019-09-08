@@ -47,7 +47,8 @@ return function(app, options)
             -- タイムアウトしてたらログイン行きなので下に流す
         end
 
-        if self.session.user and os.time() < self.session.expire then -- 認証完了したユーザ
+        local now = os.time()
+        if self.session.user and now < (self.session.expire or now + 1) then -- 認証完了したユーザ
             self.session.expire = os.time() + 30 * 60 --min
             -- 他で使いやすいように self.user に入れる
             self.user = self.session.user
