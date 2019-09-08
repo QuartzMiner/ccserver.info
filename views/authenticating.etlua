@@ -1,5 +1,8 @@
 <h1>認証待機中</h1>
+
+<button type="button" onclick="location.reload()">ゲーム内に届いたメッセージの認証ボタンを押したので先に進む</button>
+
 <form action="/login" method="POST">
-    <input type="hidden" value="<%= minecraft_user %>">
+    <input type="hidden" name="minecraft_user" value="<%= minecraft_user %>">
     <button>再送信</button>
 </form>
