@@ -3,6 +3,7 @@ local respond_to = require("lapis.application").respond_to
 local validate = require("lapis.validate")
 local openssl_rand = require("openssl.rand")
 local encoding = require("lapis.util.encoding")
+local to_json = require("lapis.util").to_json
 local capture_errors = require("lapis.application").capture_errors
 local encode_base64, decode_with_secret = encoding.encode_base64, encoding.decode_with_secret
 local redis = require 'redis'
@@ -74,6 +75,16 @@ return function(app, options)
             client:expire(token, 5 * 60)
 
             self.token = token
+
+            local http = require("lapis.nginx.http")
+            http.simple({
+                url = config.mod_auth_endpoint,
+                method = "POST",
+                body = to_json {
+                    user = minecraft_user,
+                    token = token
+                }
+            })
             return { redirect_to = self.session.redirect_to }
         end
     })
