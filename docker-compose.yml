@@ -6,8 +6,9 @@ services:
       dockerfile: Dockerfile
     image: ccserver/lapis
     container_name: lapis
-#     networks:
-#       - secure_bridge
+    networks:
+      - secure_bridge
+      - db
     volumes:
       - "./:/var/www/ccserver.info/"
     ports:
@@ -19,12 +20,15 @@ services:
 
   redis:
     image: "redis:latest"
+    networks:
+      - db
     ports:
       - "6379:6379"
     volumes:
       - "./data/redis:/data"
     user: $RUN_USER
 
-# networks:
-#   secure_bridge:
-#     external: true
+networks:
+  secure_bridge:
+    external: true
+  db:
